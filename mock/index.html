@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti-Depressant Login</title>
+    <title>Login and Registration</title>
     <style>
         body {
             margin: 0;
@@ -18,7 +18,7 @@
             height: 100vh;
         }
 
-        .login-container {
+        .container {
             background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
             padding: 20px;
             border-radius: 8px;
@@ -26,6 +26,12 @@
             max-width: 400px;
             width: 100%;
             text-align: center;
+        }
+
+        .login-container,
+        .register-container {
+            margin-bottom: 20px;
+            display: none; /* Initially hide both containers */
         }
 
         h1 {
@@ -40,7 +46,7 @@
         input[type="text"],
         input[type="password"],
         select {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjusted width to account for padding */
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
@@ -70,60 +76,112 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1> Anti-Dpressant Login Form</h1>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <label for="role">Role:</label>
-            <select id="role" name="role">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
-            <button type="submit">Login</button>
-            <div id="errorMessage" class="error-message" style="display: none;"></div>
-        </form>
+    <div class="container">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="role">Role:</label>
+                <select id="role" name="role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button type="submit">Login</button>
+                <div id="loginErrorMessage" class="error-message" style="display: none;"></div>
+            </form>
+            <p>Don't have an account? <a href="#" id="showRegisterFormLink">Register</a></p>
+        </div>
+        <div class="register-container">
+            <h1>Register</h1>
+            <form id="registerForm">
+                <label for="regUsername">Username:</label>
+                <input type="text" id="regUsername" name="regUsername" required>
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" name="regPassword" required>
+                <label for="regRole">Role:</label>
+                <select id="regRole" name="regRole">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button type="submit">Register</button>
+                <div id="registerErrorMessage" class="error-message" style="display: none;"></div>
+            </form>
+            <p>Already have an account? <a href="#" id="showLoginFormLink">Login</a></p>
+        </div>
     </div>
 
     <script>
-        // Function to handle login
-        function handleLogin(event) {
-            event.preventDefault();
+        document.addEventListener("DOMContentLoaded", function() {
+            // Show login form by default
+            document.querySelector(".login-container").style.display = "block";
 
-            // Get the username, password, and role from the form
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var role = document.getElementById("role").value;
+            // Add event listener to show registration form
+            document.getElementById("showRegisterFormLink").addEventListener("click", function(event) {
+                event.preventDefault();
+                document.querySelector(".login-container").style.display = "none";
+                document.querySelector(".register-container").style.display = "block";
+            });
 
-            // Check if the username and password match stored credentials
-            var storedUsername = localStorage.getItem("username_" + role);
-            var storedPassword = localStorage.getItem("password_" + role);
+            // Add event listener to show login form
+            document.getElementById("showLoginFormLink").addEventListener("click", function(event) {
+                event.preventDefault();
+                document.querySelector(".register-container").style.display = "none";
+                document.querySelector(".login-container").style.display = "block";
+            });
 
-            if (username === storedUsername && password === storedPassword) {
+            // Handle registration form submission
+            document.getElementById("registerForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                var regUsername = document.getElementById("regUsername").value;
+                var regPassword = document.getElementById("regPassword").value;
+                var regRole = document.getElementById("regRole").value;
+
+                // Check if the username already exists in local storage
+                var existingUser = localStorage.getItem("user_" + regUsername);
+                if (existingUser) {
+                    alert("Username already exists. Please choose another username.");
+                    return;
+                }
+
+                // Store user credentials in local storage
+                localStorage.setItem("user_" + regUsername, JSON.stringify({ username: regUsername, password: regPassword, role: regRole }));
+                alert("Registration successful! You can now log in.");
+                document.getElementById("registerForm").reset();
+            });
+
+            // Handle login form submission
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var role = document.getElementById("role").value;
+
+                // Retrieve user credentials from local storage
+                var userData = localStorage.getItem("user_" + username);
+                if (!userData) {
+                    alert("User not found. Please register.");
+                    return;
+                }
+
+                userData = JSON.parse(userData);
+                if (password !== userData.password || role !== userData.role) {
+                    alert("Invalid username, password, or role.");
+                    return;
+                }
+
                 alert("Login successful!");
-                // Redirect to appropriate page after successful login
                 if (role === 'user') {
                     window.location.href = "user_dashboard.html";
                 } else if (role === 'admin') {
                     window.location.href = "admin_dashboard.html";
                 }
-            } else {
-                var errorMessageElement = document.getElementById("errorMessage");
-                errorMessageElement.textContent = "Invalid username or password. Please try again.";
-                errorMessageElement.style.display = "block";
-            }
-        }
-
-        // Add event listener to the form for login handling
-        document.getElementById("loginForm").addEventListener("submit", handleLogin);
-
-        // For testing purposes, you can store credentials in local storage
-        localStorage.setItem("username_user", "user");
-        localStorage.setItem("password_user", "1234");
-        localStorage.setItem("username_admin", "admin");
-        localStorage.setItem("password_admin", "ubnt");
+            });
+        });
     </script>
 </body>
 </html>
