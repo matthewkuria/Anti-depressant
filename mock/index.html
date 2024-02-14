@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Depressant Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('depression-backimage.jpeg'); /* Replace 'background-image.jpg' with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1> Anti-Dpressant Login Form</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button type="submit">Login</button>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </form>
+    </div>
+
+    <script>
+        // Function to handle login
+        function handleLogin(event) {
+            event.preventDefault();
+
+            // Get the username, password, and role from the form
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var role = document.getElementById("role").value;
+
+            // Check if the username and password match stored credentials
+            var storedUsername = localStorage.getItem("username_" + role);
+            var storedPassword = localStorage.getItem("password_" + role);
+
+            if (username === storedUsername && password === storedPassword) {
+                alert("Login successful!");
+                // Redirect to appropriate page after successful login
+                if (role === 'user') {
+                    window.location.href = "user_dashboard.html";
+                } else if (role === 'admin') {
+                    window.location.href = "admin_dashboard.html";
+                }
+            } else {
+                var errorMessageElement = document.getElementById("errorMessage");
+                errorMessageElement.textContent = "Invalid username or password. Please try again.";
+                errorMessageElement.style.display = "block";
+            }
+        }
+
+        // Add event listener to the form for login handling
+        document.getElementById("loginForm").addEventListener("submit", handleLogin);
+
+        // For testing purposes, you can store credentials in local storage
+        localStorage.setItem("username_user", "user");
+        localStorage.setItem("password_user", "1234");
+        localStorage.setItem("username_admin", "admin");
+        localStorage.setItem("password_admin", "ubnt");
+    </script>
+</body>
+</html>
