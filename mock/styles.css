@@ -386,7 +386,7 @@ footer p {
   visibility: visible;
   z-index: 100;
 }
-
+/* Podcast iframe */
 @keyframes bounce {
   0% {
     transform: scale(1);
@@ -465,6 +465,9 @@ footer p {
 @media screen and (max-width: 768px){
   .slider{
       height: 400px;
+  }
+  #podcasts iframe{
+    width: 100%;
   }
 }
 .youtube{
