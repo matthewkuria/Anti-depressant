@@ -121,3 +121,48 @@ dots.forEach((li, key) => {
 window.onresize = function(event) {
     reloadSlider();
 };
+// Form Functionality 
+// Function to retrieve bookings from local storage
+function getBookings() {
+  // Retrieve existing bookings from local storage
+  return JSON.parse(localStorage.getItem('bookings')) || [];
+}
+
+// Function to submit a new booking
+function submitBooking() {
+  var service = document.getElementById("service").value;
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+
+  // Simple validation (you can enhance this)
+  if (service && date && time && name && email) {
+      // Save booking information to local storage
+      var booking = {
+          service: service,
+          date: date,
+          time: time,
+          name: name,
+          email: email
+      };
+
+      // Retrieve existing bookings
+      var bookings = getBookings();
+
+      // Add the new booking to the list
+      bookings.push(booking);
+
+      // Save the updated list back to local storage
+      localStorage.setItem('bookings', JSON.stringify(bookings));
+
+      alert("Booking confirmed!\nService: " + service + "\nDate: " + date + "\nTime: " + time + "\nName: " + name + "\nEmail: " + email);
+      // You can also send this information to a server for further processing
+  } else {
+      alert("Please fill out all fields.");
+  }
+}
+
+// Example usage: Retrieve bookings and log them to the console
+var bookings = getBookings();
+console.log("All Bookings:", bookings);

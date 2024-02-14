@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anti Depressants</title>
+    <title>Anti Depressant-Home</title>
     <link rel="icon" type="image/x-icon" href="pfp.webp">
     <!-- font-awesome -->
     <link
@@ -112,19 +112,38 @@
           and can be caused by a lot of things.Firstly before we even get to state them one needs to take depression just like any other disease and in the world <b><i>280 million</i></b>
           people suffer from depression and Kenya contributes to that figure with a staggering 1.9 million individuals.
         </p>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer">Read More...</a>
       </div>
     </section>
     <!-- services -->
     <section id="book-session" class="section">
       <div class="title">
         <h2>Book a <span>session</span></h2>
-        <form action="">
-          <label for="firstName">Your Name</label>
-          <input type="text" placeholder="Enter your Name" value=""><br>
-          <label for="date">Date</label>
-          <input type="datetime" name="" id=""><br>
-          <input type="submit" value="Submit" onclick="handleClick()">
-        </form>
+        <form id="bookingForm" onsubmit="submitBooking(); return false;">
+          <label for="service">Select Service:</label>
+          <select id="service" name="service" required>
+              <option value="haircut">Therapy</option>
+              <option value="massage">Counselling</option>
+              <option value="nails">Phone Call Session</option>
+              <option value="nails">Video Call Session</option>
+          </select>
+      
+          <label for="date">Select Date:</label>
+          <input type="date" id="date" name="date" required>
+      
+          <label for="time">Select Time:</label>
+          <input type="time" id="time" name="time" required>
+      
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required>
+      
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" required>
+      
+          <button type="submit">Book Now</button>
+      </form>
+        <a href="index.html" target="_blank" rel="noopener noreferrer">Check Bookings</a>
+        <p><small>Admin only!</small></p>
       </div>
     </section>
     <!-- contact -->
@@ -161,6 +180,6 @@
         console.log(e.event.target)
       }
     </script>
-    <script src="app.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
