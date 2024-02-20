@@ -183,9 +183,21 @@ p {
   max-width: 1170px;
 }
 .blog-post{
-  padding: 50px;
-  background-color: #222;
-  color: white;
+  padding: 50px; 
+  display: flex;
+   
+ 
+}
+.blog-img{
+  width: 50vw;
+  height: auto;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.blog-img img{
+width: 220px;
+border-radius: 30px;
 }
 @media screen and (min-width: 992px) {
   .section-center {
