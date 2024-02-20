@@ -115,6 +115,9 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+.container{
+  z-index: 1;
+}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -130,6 +133,7 @@ p {
   }
   body {
     font-size: 1rem;
+   
   }
   h1,
   h2,
@@ -178,6 +182,11 @@ p {
   margin: 0 auto;
   max-width: 1170px;
 }
+.blog-post{
+  padding: 50px;
+  background-color: #222;
+  color: white;
+}
 @media screen and (min-width: 992px) {
   .section-center {
     width: 95vw;
@@ -197,6 +206,7 @@ Scroll
 nav {
   background: var(--clr-white);
   padding: 1rem 1.5rem;
+  z-index: 3;
 }
 /* fixed nav */
 .fixed-nav {
@@ -386,7 +396,7 @@ footer p {
   visibility: visible;
   z-index: 100;
 }
-/* Podcast iframe */
+
 @keyframes bounce {
   0% {
     transform: scale(1);
@@ -510,6 +520,6 @@ button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 15px;
+  /* padding: 15px; */
   cursor: pointer;
 }
