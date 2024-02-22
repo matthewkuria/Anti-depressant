@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anti Depressant-Home</title>
+    <title>Not Alone- Home</title>
     <link rel="icon" type="image/x-icon" href="pfp.webp">
+    <!-- Bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- font-awesome -->
     <link
       rel="stylesheet"
@@ -20,9 +22,11 @@
         <div class="nav-center">
           <!-- nav header -->
           <div class="nav-header">
-			  <a href="">
-            <img src="icon.png" class="logo" alt="logo" />
-			 </a>
+            <div class="">
+              <a href="">
+                <img src="icon.png" class="logo" alt="logo" />
+             </a>
+           </div>
             <button class="nav-toggle">
               <i class="fas fa-bars"></i>
             </button>
@@ -58,48 +62,50 @@
       <!-- banner -->
       <div class="banner">
         <div class="container">
-          <h1>Anti-Depressant</h1>
-
-
-          <div class="slider">
-            <div class="list">
-                <div class="item">
-                    <img src="dep.jpg" alt="">
-                </div>
-                <div class="item">
-                    <img src="ai.jpeg" alt="">
-                </div>
-                <div class="item">
-                    <img src="pod.jpeg" alt="">
-                </div>
-                <div class="item">
-                    <img src="blg.webp" alt="">
-                </div>
-                <div class="item">
-                    <img src="book2.jpg" alt="">
-                </div>
+         
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="buttons">
-                <button id="prev"><</button>
-                <button id="next">></button>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./depression-backimage.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>You are Not Alone</h5>
+                  <p> Welcome to Not alone Website!
+                    Are you suffering psychologically?
+                    Or do you know someone who is depressed?
+                    We are here to tell you DON'T Give Up! For you are not alone!</p>
+                    <a href="#podcasts" class="scroll-link btn btn-white">explore podcasts</a>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./savemoney.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Lets Help you Save Money</h5>
+                  <p>Treating depression is so expensive but not any longer...with our platform you save money.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./podcast-mic.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Listen to our Not Alone Podcast</h5>
+                  <p>We have a curated list of Podcast of depression success stories.</p>
+                </div>
+              </div>
             </div>
-            <ul class="dots">
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-
-
-          <p>
-            Welcome to Talk Waves Podcasts!
-			  Are you suffering psychologically?
-			  Or do you know someone who is depressed?
-			  We are here to tell you DON'T Give Up! For you are not alone!
-          </p>
-          <a href="#tours" class="scroll-link btn btn-white">explore podcasts</a>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>          
+         
         </div>
       </div>
     </header>
@@ -157,6 +163,7 @@
        <iframe width="560" height="315" src="https://www.youtube.com/embed/PJc93ZCOoaY?si=uhTW2F5kcWMneWx8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
        <iframe width="560" height="315" src="https://www.youtube.com/embed/_rKgLN16Zmw?si=2vW3_7Z4Z5XcZscH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
        <iframe width="560" height="315" src="https://www.youtube.com/embed/Dy7ewGB_9tg?si=oK1YozFv5mevFv1B" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/qrRi7fTAIsQ?si=h7s8vFnYUiUUJrMh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
        <p class="spotify">SPOTIFY</p>
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/4RpvCJ08DtZvB1PF71vCpD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -175,6 +182,7 @@
       <i class="fas fa-arrow-up"></i>
     </a>
     <!-- javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
       function handleClick(e){
         console.log(e.event.target)
