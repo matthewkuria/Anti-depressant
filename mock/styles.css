@@ -199,6 +199,15 @@ p {
 width: 220px;
 border-radius: 30px;
 }
+.entertainment{
+  text-transform: uppercase;
+  color: white;
+  background-color: blue;
+  text-align: center;
+  padding: 10px;
+  border-radius: 45px;
+  margin-bottom: 20px;
+}
 @media screen and (min-width: 992px) {
   .section-center {
     width: 95vw;
