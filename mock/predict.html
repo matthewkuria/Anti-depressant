@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depression Identifier</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    button {
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Depression Identifier</h2>
+
+<form id="symptomsForm">
+    <label><input type="checkbox" name="lowMood"> Low mood or sadness</label>
+    <label><input type="checkbox" name="lossInterest"> Loss of interest or pleasure in activities</label>
+    <label><input type="checkbox" name="changesAppetite"> Changes in appetite or weight</label>
+    <label><input type="checkbox" name="fatigue"> Fatigue or loss of energy</label>
+    <label><input type="checkbox" name="sleepProblems"> Sleep problems (insomnia or oversleeping)</label>
+    <label><input type="checkbox" name="psychomotorProblems"> Psychomotor problems (restlessness or slowed movements)</label>
+    <label><input type="checkbox" name="feelingsWorthlessness"> Feelings of worthlessness or guilt</label>
+    <label><input type="checkbox" name="concentrationProblems"> Concentration problems</label>
+    <label><input type="checkbox" name="suicidalThoughts"> Recurrent thoughts of death or suicide</label>
+    <button type="button" onclick="identifyDepression()">Identify Depression</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function identifyDepression() {
+    const symptomsForm = document.getElementById('symptomsForm');
+    const checkboxes = symptomsForm.querySelectorAll('input[type="checkbox"]');
+    const selectedSymptoms = [];
+    
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            selectedSymptoms.push(checkbox.name);
+        }
+    });
+    
+    const depressionType = getDepressionType(selectedSymptoms);
+    displayResult(depressionType);
+}
+
+function getDepressionType(symptoms) {
+    // Define criteria to identify depression types based on symptoms
+    // This is a simplified example
+    if (symptoms.includes('lowMood') && symptoms.includes('lossInterest')) {
+        return 'Major Depressive Disorder (MDD)';
+    } else if (symptoms.includes('lowMood') && symptoms.includes('changesAppetite')) {
+        return 'Bipolar Disorder';
+    } else {
+        return 'Unknown'; // Depression type not identified based on provided symptoms
+    }
+}
+
+function displayResult(depressionType) {
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Based on the symptoms, the likely type of depression is: ${depressionType}`;
+}
+</script>
+
+</body>
+</html>
