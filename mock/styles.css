@@ -500,6 +500,9 @@ footer p {
   #podcasts iframe{
     width: 100%;
   }
+  #entertainment iframe{
+    width: 100%;
+  }
 }
 .youtube{
   color: white; 
